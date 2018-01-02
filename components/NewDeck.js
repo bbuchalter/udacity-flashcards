@@ -1,13 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native'
+import { connect } from 'react-redux'
+import { createDeck } from '../actions'
 
-export default class NewDeck extends React.Component {
+class NewDeck extends React.Component {
   state = {
-    deckName: ''
+    name: ''
   }
 
   _submit() {
-    console.log('creating deck named ', this.state.deckName)
+    this.props.create(this.state)
   }
 
   render() {
@@ -15,9 +17,9 @@ export default class NewDeck extends React.Component {
       <View style={styles.container}>
         <Text>What is the title of your deck?</Text>
         <TextInput
-          value={this.state.deckName}
+          value={this.state.name}
           style={{height: 40, borderColor: 'gray', borderWidth: 1, width: 100}}
-          onChangeText={(deckName) => this.setState({deckName})} />
+          onChangeText={(name) => this.setState({name})} />
         <Button
           onPress={() => this._submit()}
           title="Create Deck"/>
@@ -34,3 +36,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+function mapDispatchToProps(dispatch) {
+  return {
+    create: (state) => dispatch(createDeck({
+      ...state
+    }))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(NewDeck)

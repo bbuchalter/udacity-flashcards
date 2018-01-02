@@ -4,17 +4,28 @@ import { Constants } from 'expo'
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import ChooseDeck from './components/ChooseDeck'
 import NewDeck from './components/NewDeck'
+import { decks } from './reducers'
+import { createStore, combineReducers } from 'redux'
+import { Provider } from 'react-redux'
+import devToolsEnhancer from 'remote-redux-devtools'
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <CardsStatusBar barStyle="light-content" />
-        <MainNavigation />
-      </View>
+      <Provider store={store}>
+        <View style={{ flex: 1 }}>
+          <CardsStatusBar barStyle="light-content" />
+          <MainNavigation />
+        </View>
+      </Provider>
     );
   }
 }
+
+const store = createStore(
+  combineReducers({ decks }),
+  devToolsEnhancer()
+)
 
 function CardsStatusBar({...props}) {
   return(

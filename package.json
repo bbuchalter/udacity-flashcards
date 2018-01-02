@@ -5,7 +5,8 @@
   "devDependencies": {
     "jest-expo": "23.0.0",
     "react-native-scripts": "1.8.1",
-    "react-test-renderer": "16.0.0"
+    "react-test-renderer": "16.0.0",
+    "remote-redux-devtools": "^0.5.12"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
@@ -22,6 +23,8 @@
     "expo": "^23.0.4",
     "react": "16.0.0",
     "react-native": "0.50.3",
-    "react-navigation": "^1.0.0-beta.22"
+    "react-navigation": "^1.0.0-beta.22",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2"
   }
 }
