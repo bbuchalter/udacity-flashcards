@@ -1,15 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import { Constants } from 'expo'
+import { TabNavigator, StackNavigator } from 'react-navigation'
+import ChooseDeck from './components/ChooseDeck'
+import NewDeck from './components/NewDeck'
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
+      <View style={{ flex: 1 }}>
         <CardsStatusBar barStyle="light-content" />
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+        <MainNavigation />
       </View>
     );
   }
@@ -22,6 +23,27 @@ function CardsStatusBar({...props}) {
     </View>
   )
 }
+
+const DeckTabs = TabNavigator({
+  ChooseDeck: {
+    screen: ChooseDeck,
+    navigationOptions: {
+      tabBarLabel: "Choose Deck"
+    }
+  },
+  NewDeck: {
+    screen: NewDeck,
+    navigationOptions: {
+      tabBarLabel: "Create Deck"
+    }
+  }
+})
+
+const MainNavigation = StackNavigator({
+  Home: {
+    screen: DeckTabs,
+  },
+})
 
 const styles = StyleSheet.create({
   container: {
