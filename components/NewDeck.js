@@ -4,6 +4,9 @@ import { connect } from 'react-redux'
 import { createDeck } from '../actions'
 
 class NewDeck extends React.Component {
+  static navigationOptions = () => ({
+    title: "Create Deck"
+  })
   state = {
     name: ''
   }

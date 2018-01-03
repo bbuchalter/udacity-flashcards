@@ -3,6 +3,9 @@ import { View, Text, StyleSheet, Button } from 'react-native'
 import { connect } from 'react-redux'
 
 class ChooseDeck extends React.Component {
+  static navigationOptions = () => ({
+    title: "Decks"
+  })
   render() {
     return (
       <View style={styles.container}>
