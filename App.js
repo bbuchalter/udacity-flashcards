@@ -7,7 +7,7 @@ import NewDeck from './components/NewDeck'
 import { decks } from './reducers'
 import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
-import devToolsEnhancer from 'remote-redux-devtools'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 export default class App extends React.Component {
   render() {
@@ -24,7 +24,7 @@ export default class App extends React.Component {
 
 const store = createStore(
   combineReducers({ decks }),
-  devToolsEnhancer()
+  composeWithDevTools()
 )
 
 function CardsStatusBar({...props}) {

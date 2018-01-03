@@ -10,6 +10,7 @@ class NewDeck extends React.Component {
 
   _submit() {
     this.props.create(this.state)
+    this.props.goBack()
   }
 
   render() {
@@ -37,11 +38,12 @@ const styles = StyleSheet.create({
   },
 });
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch, { navigation }) {
   return {
     create: (state) => dispatch(createDeck({
       ...state
-    }))
+    })),
+    goBack: () => navigation.goBack()
   }
 }
 

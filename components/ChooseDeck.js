@@ -1,11 +1,18 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Button } from 'react-native'
+import { connect } from 'react-redux'
 
-export default class ChooseDeck extends React.Component {
+class ChooseDeck extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Choose Deck Screen</Text>
+        <Text>Choose Deck:</Text>
+        {this.props.decks.map((deck) => {
+          return(<Button
+            key={deck.name}
+            onPress={() => console.log(deck.name)}
+            title={deck.name} />)
+        })}
       </View>
     );
   }
@@ -19,3 +26,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+function mapStateToProps(state) {
+  return {
+    ...state
+  }
+}
+
+export default connect(mapStateToProps)(ChooseDeck)
