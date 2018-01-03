@@ -4,6 +4,7 @@ import { Constants } from 'expo'
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import ChooseDeck from './components/ChooseDeck'
 import NewDeck from './components/NewDeck'
+import DeckDetails from './components/DeckDetails'
 import { decks } from './reducers'
 import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
@@ -54,6 +55,9 @@ const MainNavigation = StackNavigator({
   Home: {
     screen: DeckTabs,
   },
+  DeckDetails: {
+    screen: DeckDetails
+  }
 })
 
 const styles = StyleSheet.create({

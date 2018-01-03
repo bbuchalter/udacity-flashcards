@@ -10,7 +10,7 @@ class ChooseDeck extends React.Component {
         {this.props.decks.map((deck) => {
           return(<Button
             key={deck.name}
-            onPress={() => console.log(deck.name)}
+            onPress={() => this.props.navigation.navigate('DeckDetails', {deck: deck.name})}
             title={deck.name} />)
         })}
       </View>
