@@ -10,7 +10,8 @@ class NewDeck extends React.Component {
 
   _submit() {
     this.props.create(this.state)
-    this.props.goBack()
+    this.props.navigation.navigate('ChooseDeck')
+    this.setState({name: ''})
   }
 
   render() {
@@ -43,7 +44,6 @@ function mapDispatchToProps(dispatch, { navigation }) {
     create: (state) => dispatch(createDeck({
       ...state
     })),
-    goBack: () => navigation.goBack()
   }
 }
 
