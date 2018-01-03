@@ -5,7 +5,8 @@ import { TabNavigator, StackNavigator } from 'react-navigation'
 import ChooseDeck from './components/ChooseDeck'
 import NewDeck from './components/NewDeck'
 import DeckDetails from './components/DeckDetails'
-import { decks } from './reducers'
+import NewCard from './components/NewCard'
+import { decks, cards } from './reducers'
 import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
@@ -24,7 +25,7 @@ export default class App extends React.Component {
 }
 
 const store = createStore(
-  combineReducers({ decks }),
+  combineReducers({ decks, cards }),
   composeWithDevTools()
 )
 
@@ -57,6 +58,9 @@ const MainNavigation = StackNavigator({
   },
   DeckDetails: {
     screen: DeckDetails
+  },
+  NewCard: {
+    screen: NewCard
   }
 })
 

@@ -5,7 +5,7 @@ import { createDeck } from '../actions'
 
 class NewDeck extends React.Component {
   static navigationOptions = () => ({
-    title: "Create Deck"
+    title: "New Deck"
   })
   state = {
     name: ''
