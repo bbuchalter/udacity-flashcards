@@ -65,7 +65,7 @@ class Quiz extends React.Component {
   results() {
     const deckName = this.props.navigation.state.params.deck
     const cards = this.props.cards.filter((card) => card.deck === deckName)
-    const percentageCorrect = Math.round(this.state.correctCount/cards.length) * 100
+    const percentageCorrect = Math.round((this.state.correctCount/cards.length) * 100)
     return(
       <Text>
         You finished the quiz and answered {percentageCorrect}% correct!
