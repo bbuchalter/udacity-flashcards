@@ -14,7 +14,7 @@ class DeckDetails extends React.Component {
         <Text>{deckName}</Text>
         <Text>{cards.length} cards</Text>
         {cards.length && <Button
-          onPress={() => this.props.navigation.navigate('QuizQuestion', {deck: deckName})}
+          onPress={() => this.props.navigation.navigate('Quiz', {deck: deckName})}
           title="Start Quiz"/>}
         <Button
           onPress={() => this.props.navigation.navigate('NewCard', {deck: deckName})}

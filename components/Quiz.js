@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native'
 import { connect } from 'react-redux'
 
-class QuizQuestion extends React.Component {
+class Quiz extends React.Component {
   state = {
     showQuestion: true,
     correctCount: 0,
@@ -115,4 +115,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(QuizQuestion)
+export default connect(mapStateToProps)(Quiz)

@@ -6,7 +6,7 @@ import ChooseDeck from './components/ChooseDeck'
 import NewDeck from './components/NewDeck'
 import DeckDetails from './components/DeckDetails'
 import NewCard from './components/NewCard'
-import QuizQuestion from './components/QuizQuestion'
+import Quiz from './components/Quiz'
 import { decks, cards } from './reducers'
 import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
@@ -63,8 +63,8 @@ const MainNavigation = StackNavigator({
   NewCard: {
     screen: NewCard
   },
-  QuizQuestion: {
-    screen: QuizQuestion
+  Quiz: {
+    screen: Quiz
   }
 })
 
