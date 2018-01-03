@@ -13,13 +13,9 @@ class NewCard extends React.Component {
     answer: ''
   }
 
-  deckName() {
-    this.props.navigation.state.params.deck
-  }
-
   _submit() {
     this.props.create(this.state)
-    this.props.navigation.navigate('DeckDetails', {deck: this.deckName()})
+    this.props.navigation.navigate('DeckDetails', {deck: this.props.navigation.state.params.deck})
     this.setState({question: '', answer: ''})
   }
 
@@ -55,8 +51,9 @@ const styles = StyleSheet.create({
 
 function mapDispatchToProps(dispatch, { navigation }) {
   return {
-    create: (state) => dispatch(createCard({
-      ...state
+    create: (card) => dispatch(createCard({
+      ...card,
+      deck: navigation.state.params.deck
     })),
   }
 }

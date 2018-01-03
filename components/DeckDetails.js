@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native'
+import { connect } from 'react-redux'
 
 class DeckDetails extends React.Component {
   static navigationOptions = ({ navigation }) => ({
@@ -7,9 +8,11 @@ class DeckDetails extends React.Component {
   })
   render() {
     const deckName = this.props.navigation.state.params.deck
+    const cardCount = this.props.cards.filter((card) => card.deck === deckName).length
     return (
       <View style={styles.container}>
-        <Text>Deck Details: {deckName}</Text>
+        <Text>{deckName}</Text>
+        <Text>{cardCount} cards</Text>
         <Button
           onPress={() => this.props.navigation.navigate('NewCard', {deck: deckName})}
           title="Add Card"/>
@@ -26,4 +29,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-export default DeckDetails
+
+function mapStateToProps(state) {
+  return {
+    ...state
+  }
+}
+export default connect(mapStateToProps)(DeckDetails)
