@@ -13,7 +13,7 @@ class NewDeck extends React.Component {
 
   _submit() {
     this.props.create(this.state)
-    this.props.navigation.navigate('ChooseDeck')
+    this.props.navigation.navigate('DeckDetails', {deck: this.state.name})
     this.setState({name: ''})
   }
 
