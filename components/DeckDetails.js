@@ -4,11 +4,11 @@ import { connect } from 'react-redux'
 
 class DeckDetails extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-    title: navigation.state.params.deck,
+    title: navigation.state.params.deck, // TODO: Would like this to use currentDeckName
   })
   render() {
-    const deckName = this.props.navigation.state.params.deck
-    const cards = this.props.cards.filter((card) => card.deck === deckName)
+    const deckName = this.props.currentDeckName
+    const cards = this.props.cardsForDeck
     return (
       <View style={styles.container}>
         <Text>{deckName}</Text>
@@ -33,9 +33,11 @@ const styles = StyleSheet.create({
   },
 });
 
-function mapStateToProps(state) {
+function mapStateToProps(state, {navigation}) {
+  const currentDeckName = navigation.state.params.deck
   return {
-    ...state
+    currentDeckName: currentDeckName,
+    cardsForDeck: state.cards.filter((card) => card.deck === currentDeckName)
   }
 }
 export default connect(mapStateToProps)(DeckDetails)
