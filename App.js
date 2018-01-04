@@ -39,16 +39,16 @@ function CardsStatusBar({...props}) {
 }
 
 const DeckTabs = TabNavigator({
-  NewDeck: {
-    screen: NewDeck,
-    navigationOptions: {
-      tabBarLabel: "Create Deck"
-    }
-  },
   ChooseDeck: {
     screen: ChooseDeck,
     navigationOptions: {
       tabBarLabel: "Choose Deck"
+    }
+  },
+  NewDeck: {
+    screen: NewDeck,
+    navigationOptions: {
+      tabBarLabel: "Create Deck"
     }
   },
 })
