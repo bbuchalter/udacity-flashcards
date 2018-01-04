@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native'
 import { connect } from 'react-redux'
+import { clearLocalNotification, setLocalNotification } from '../utils/Notifications'
 
 class Quiz extends React.Component {
   state = {
@@ -74,6 +75,10 @@ class Quiz extends React.Component {
     const deckName = this.props.navigation.state.params.deck
     const cards = this.props.cards.filter((card) => card.deck === deckName)
     const percentageCorrect = Math.round((this.state.correctCount/cards.length) * 100)
+
+    clearLocalNotification()
+      .then(setLocalNotification)
+
     return(
       <View style={styles.container}>
         <Text>

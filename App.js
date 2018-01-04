@@ -11,8 +11,13 @@ import { decks, cards } from './reducers'
 import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import { setLocalNotification } from './utils/Notifications'
 
 export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification()
+  }
+
   render() {
     return (
       <Provider store={store}>
