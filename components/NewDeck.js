@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native'
 import { connect } from 'react-redux'
 import { createDeck } from '../actions'
+import { NavigationActions } from 'react-navigation'
 
 class NewDeck extends React.Component {
   static navigationOptions = () => ({
@@ -13,7 +14,13 @@ class NewDeck extends React.Component {
 
   _submit() {
     this.props.create(this.state)
-    this.props.navigation.navigate('DeckDetails', {deck: this.state.name})
+    this.props.navigation.dispatch(NavigationActions.reset({
+      index: 1,
+      actions: [
+        NavigationActions.navigate({ routeName: 'Home'}),
+        NavigationActions.navigate({ routeName: 'DeckDetails', params: {deck: this.state.name}}),
+      ]
+    }))
     this.setState({name: ''})
   }
 
