@@ -62,14 +62,27 @@ class Quiz extends React.Component {
       <Button onPress={() => this.submit(false)} title="Incorrect" />
     </View>
 
+  restart() {
+    this.setState({
+      showQuestion: true,
+      correctCount: 0,
+      cardIndex: 0
+    })
+  }
+
   results() {
     const deckName = this.props.navigation.state.params.deck
     const cards = this.props.cards.filter((card) => card.deck === deckName)
     const percentageCorrect = Math.round((this.state.correctCount/cards.length) * 100)
     return(
-      <Text>
-        You finished the quiz and answered {percentageCorrect}% correct!
-      </Text>
+      <View style={styles.container}>
+        <Text>
+          You finished the quiz and answered {percentageCorrect}% correct!
+        </Text>
+        <Button
+          onPress={() => this.restart()}
+          title="Restart Quiz"/>
+      </View>
     )
   }
 
