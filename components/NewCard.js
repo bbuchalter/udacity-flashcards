@@ -15,7 +15,7 @@ class NewCard extends React.Component {
 
   _submit() {
     this.props.create(this.state)
-    this.props.navigation.navigate('DeckDetails', {deck: this.props.navigation.state.params.deck})
+    this.props.navigation.goBack()
     this.setState({question: '', answer: ''})
   }
 
