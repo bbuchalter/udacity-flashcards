@@ -6,15 +6,19 @@ class ChooseDeck extends React.Component {
   static navigationOptions = () => ({
     title: "Decks"
   })
+
+  cardCountFor(deck) {
+    return(this.props.cards.filter((card) => card.deck === deck).length)
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>Choose Deck:</Text>
         {this.props.decks.map((deck) => {
           return(<Button
             key={deck.name}
             onPress={() => this.props.navigation.navigate('DeckDetails', {deck: deck.name})}
-            title={deck.name} />)
+            title={`${deck.name} (${this.cardCountFor(deck.name)} cards)`} />)
         })}
       </View>
     );
