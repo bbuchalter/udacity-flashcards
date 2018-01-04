@@ -15,8 +15,7 @@ class Quiz extends React.Component {
   })
 
   submit(answeredCorrectly) {
-    const deckName = this.props.currentDeckName
-    const cards = this.props.cards
+    const {deckName, cards} = this.props
     let newCorrectCount = this.state.correctCount
 
     if(answeredCorrectly) {
@@ -32,8 +31,7 @@ class Quiz extends React.Component {
   }
 
   question(cardIndex) {
-    const deckName = this.props.currentDeckName
-    const cards = this.props.cards
+    const {deckName, cards} = this.props
     return(
       <View style={styles.container}>
         {this.progress()}
@@ -45,8 +43,7 @@ class Quiz extends React.Component {
   }
 
   answer(cardIndex) {
-    const deckName = this.props.currentDeckName
-    const cards = this.props.cards
+    const {deckName, cards} = this.props
     return(
       <View style={styles.container}>
         {this.progress()}
@@ -72,8 +69,7 @@ class Quiz extends React.Component {
   }
 
   results() {
-    const deckName = this.props.currentDeckName
-    const cards = this.props.cards
+    const {deckName, cards} = this.props
     const percentageCorrect = Math.round((this.state.correctCount/cards.length) * 100)
 
     clearLocalNotification()
@@ -92,8 +88,7 @@ class Quiz extends React.Component {
   }
 
   progress() {
-    const deckName = this.props.currentDeckName
-    const cards = this.props.cards
+    const {deckName, cards} = this.props
     const cardIndex = this.state.cardIndex
     return(
       <Text>{cardIndex + 1} of {cards.length}</Text>
@@ -101,8 +96,7 @@ class Quiz extends React.Component {
   }
 
   render() {
-    const deckName = this.props.currentDeckName
-    const cards = this.props.cards
+    const {deckName, cards} = this.props
     const cardIndex = this.state.cardIndex
 
     return (
@@ -127,11 +121,11 @@ const styles = StyleSheet.create({
   },
 });
 
-function mapStateToProps(state) {
-  const currentDeckName = navigation.state.params.deck
+function mapStateToProps(state, {navigation}) {
+  const deckName = navigation.state.params.deck
   return {
-    currentDeckName: currentDeckName,
-    cardsForDeck: state.cards.filter((card) => card.deck === currentDeckName)
+    deckName,
+    cards: state.cards.filter((card) => card.deck === deckName)
   }
 }
 
