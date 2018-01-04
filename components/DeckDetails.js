@@ -12,7 +12,7 @@ class DeckDetails extends React.Component {
       <View style={styles.container}>
         <Text>{deckName}</Text>
         <Text>{cards.length} cards</Text>
-        {cards.length && <Button
+        {cards.length > 0 && <Button
           onPress={() => this.props.navigation.navigate('Quiz', {deck: deckName})}
           title="Start Quiz"/>}
         <Button
