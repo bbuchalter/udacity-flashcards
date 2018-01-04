@@ -10,7 +10,7 @@ With this app you can:
 
 # Development
 * `yarn install`
-* `yarn start` and choose `i` or `a` to start iOS or Android simulators
+* `yarn ios` (this app has been tested only with iOS simulator)
 
 # Debugging
 * [Install React Native Debugger](https://github.com/jhen0409/react-native-debugger#installation)
